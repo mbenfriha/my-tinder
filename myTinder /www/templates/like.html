@@ -1,0 +1,13 @@
+<ion-view view-title="Like">
+    <ion-content class="padding">
+        <ion-list show-delete="false" can-swipe="true">
+
+            <ion-item ng-repeat="like in likes" class="item item-thumbnail-left">
+                <img ng-src="{{ like.image }}">
+                <h2>{{like.name}}</h2>
+                <ion-option-button ng-click="delete($index)" class="button-assertive icon ion-trash-a"></ion-option-button>
+            </ion-item>
+
+        </ion-list>
+    </ion-content>
+</ion-view>

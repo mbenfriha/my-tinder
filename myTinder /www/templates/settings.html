@@ -1,0 +1,24 @@
+<ion-view view-title="Paramètres">
+    <ion-content class="padding">
+        <h2>Editer mon compte</h2>
+
+        <label class="item item-input">
+            <span class="input-label">Password</span>
+            <input ng-model="password" type="password">
+        </label>
+        <button ng-click="changePassword(password)" class="button button-positive">Modifier</button>
+
+
+        <h2>Modifier ma photo de profil</h2>
+
+        <label class="item item-input">
+            <span class="input-label">image</span>
+            <input ng-model="image" type="text">
+        </label>
+            <button ng-click="changeImage(image)" class="button button-positive">Changer</button>
+
+
+        <img class="full-image" ng-src="{{ image }}" alt="{{ name }}">
+
+    </ion-content>
+</ion-view>

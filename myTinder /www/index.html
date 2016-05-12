@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/collide.js"></script>
+    <script src="lib/ionic.tdcards2.js"></script>
+
+    <!-- ng-cordova  -->
+    <script src="js/ng-cordova.min.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/fb/openfb.js"></script>
+    <script src="js/fb/ngopenfb.js"></script>
+    <script src="js/app.js"></script>
+    <script src="lib/angular-cookies/angular-cookies.min.js"></script>
+
+    <script src="js/directives.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/cards.js"></script>
+
+
+    <script>
+      // Facebbok OAuth init
+      window.fbAsyncInit = function () {
+        FB.init({
+          appId: '536889406498400', // Replace the App ID with yours
+          status: true, // check login status
+          cookie: true, // enable cookies to allow the server to access the session
+          xfbml: true  // parse XFBML
+        });
+      };
+      // Load the SDK asynchronously
+      (function (d) {
+        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+        if (d.getElementById(id)) {
+          return;
+        }
+        js = d.createElement('script');
+        js.id = id;
+        js.async = true;
+        js.src = document.location.protocol + "//connect.facebook.net/en_US/all.js";
+        ref.parentNode.insertBefore(js, ref);
+      }(document));
+      // Facebbok OAuth init - END
+
+      </script>
+
+  </head>
+  <body ng-app="starter">
+
+    <ion-side-menus>
+      <ion-side-menu-content >
+        <ion-nav-bar class="bar-positive">
+          <ion-nav-back-button></ion-nav-back-button>
+          <ion-nav-buttons ng-show="!nav" side="left">
+            <button ng-show="!nav" class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+          </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view></ion-nav-view>
+      </ion-side-menu-content>
+      <ion-side-menu side="left" ng-show="!nav">
+        <ion-list>
+          <ion-item menu-close ui-sref="home">
+            Accueil
+          </ion-item>
+          <ion-item menu-close ui-sref="like">
+            Like
+          </ion-item>
+          <ion-item menu-close ui-sref="dislike">
+            Dislike
+          </ion-item>
+          <ion-item menu-close ui-sref="settings">
+            Mes paramètres
+          </ion-item>
+          <ion-item>
+            <button class="button button-positive" ng-controller="HomeCtrl" ng-click="logout()">Logout</button>
+          </ion-item>
+        </ion-list>
+      </ion-side-menu>
+    </ion-side-menus>
+
+    <script src="lib/angular-sanitize/angular-sanitize.min.js"></script>
+
+  </body>
+</html>

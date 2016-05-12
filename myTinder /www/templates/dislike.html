@@ -1,0 +1,13 @@
+<ion-view view-title="Dislike">
+    <ion-content class="padding">
+        <ion-list show-delete="false" can-swipe="true">
+
+            <ion-item ng-repeat="dislike in dislikes" class="item item-thumbnail-left">
+                <img ng-src="{{ dislike.image }}">
+                <h2>{{dislike.name}}</h2>
+                <ion-option-button ng-click="delete($index)" class="button-assertive icon ion-trash-a"></ion-option-button>
+            </ion-item>
+
+        </ion-list>
+    </ion-content>
+</ion-view>

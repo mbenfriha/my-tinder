@@ -1,0 +1,86 @@
+<ion-view view-title="Accueil">
+
+        <ion-pane ng-controller="CardsCtrl" class="background-grey">
+            <ion-header-bar class="bar-default">
+                <h1 class="title">TD Cards 2</h1>
+            </ion-header-bar>
+
+            <div class="td-title">
+                <div class="row">
+                    <div class="col">Master: <span>{{ cards.master.length }}</span></div>
+                    <div class="col">Cards: <span>{{ cards.active.length }}</span></div>
+                    <div class="col">Discards: <span>{{ cards.discards.length }}</span></div>
+                </div>
+                <div class="row">
+                    <div class="col">Liked: <span>{{ cards.liked.length }}</span></div>
+                    <div class="col">Disliked: <span>{{ cards.disliked.length }}</span></div>
+                </div>
+            </div>
+
+
+            <!-- *************************
+              TD Cards
+              - We start off with an ng-if so that the cards are not generated
+                unless $scope.cards is not 'null'
+            ************************* -->
+            <div ng-if="cards.active">
+                <td-cards>
+                    <td-card ng-repeat="card in cards.active" on-destroy="cardDestroyed($index)" on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)">
+                        <div class="image" ng-controller="CardCtrl">
+                            <div class="no-text"><i class="icon ion-thumbsdown"></i></div>
+                            <div class="yes-text"><i class="icon ion-thumbsup"></i></div>
+                            <!-- *************************
+                              Discard
+                              - The card is removed from the deck and a fly away animation is triggered.
+                              - onClickTransitionOut is found in ionic.tdcards.js
+                              - Animation can be customized by changing defaults
+                            ************************* -->
+                            <div class="discard" ng-click="onClickTransitionOut(card)">PASSER</div>
+                            <div class="name-profile">{{card.name}}</div>
+                            <img class="image-profile" ng-src="{{ card.image }}">
+                        </div>
+                    </td-card>
+                    <!-- *************************
+                      End Card
+                      - 'drag' is set to false. The user cannot drag it.
+                      - 'refreshCards()' reloads all cards that have NOT been discarded.
+                    ************************* -->
+                    <td-card id="end-card" drag="false">
+                        <i class="icon ion-ios-refresh disable-user-behavior" ng-click="refreshCards()"></i>
+                    </td-card>
+                </td-cards>
+            </div>
+
+        </ion-pane>
+
+
+</ion-view>
+
+
+
+<section class="agency">
+    <h1 class="hidden-title" style="display: none;">L’agence de communication 360 à Lyon et Annecy</h1>
+
+    <div id="loader">On se presse, on se presse...</div>
+
+    <div class="background" style="opacity: 1;">
+        <div class="slide" style="opacity: 0; width: 554px; height: 415px;">
+            <img alt="MG_8021" data-src-base="http://www.pamplemousse.com" data-src="<320:/wp-content/uploads/2013/12/MG_80212-320x426.jpg,<500:/wp-content/uploads/2013/12/MG_80212-500x666.jpg,<1024:/wp-content/uploads/2013/12/MG_80212.jpg,<1280:/wp-content/uploads/2013/12/MG_80212.jpg,<1920:/wp-content/uploads/2013/12/MG_80212.jpg,>1920:/wp-content/uploads/2013/12/MG_80212.jpg" data-src2x="<500:/wp-content/uploads/2013/12/MG_80212.jpg,<1024:/wp-content/uploads/2013/12/MG_80212.jpg,>1024:/wp-content/uploads/2013/12/MG_80212.jpg" src="http://www.pamplemousse.com/wp-content/uploads/2013/12/MG_80212.jpg" style="width: 554px; height: auto; left: 0px;"><noscript>&lt;img src="http://www.pamplemousse.com/wp-content/uploads/2013/12/MG_80212.jpg" alt="MG_8021" /&gt;</noscript>            </div>
+        <div class="slide" style="opacity: 1; width: 554px; height: 415px;">
+            <img alt="MG_8024" data-src-base="http://www.pamplemousse.com" data-src="<320:/wp-content/uploads/2013/12/MG_80241-320x426.jpg,<500:/wp-content/uploads/2013/12/MG_80241-500x666.jpg,<1024:/wp-content/uploads/2013/12/MG_80241.jpg,<1280:/wp-content/uploads/2013/12/MG_80241.jpg,<1920:/wp-content/uploads/2013/12/MG_80241.jpg,>1920:/wp-content/uploads/2013/12/MG_80241.jpg" data-src2x="<500:/wp-content/uploads/2013/12/MG_80241.jpg,<1024:/wp-content/uploads/2013/12/MG_80241.jpg,>1024:/wp-content/uploads/2013/12/MG_80241.jpg" src="http://www.pamplemousse.com/wp-content/uploads/2013/12/MG_80241.jpg" style="width: 554px; height: auto; left: 0px;"><noscript>&lt;img src="http://www.pamplemousse.com/wp-content/uploads/2013/12/MG_80241.jpg" alt="MG_8024" /&gt;</noscript>            </div>
+    </div>
+    <div class="points" style="opacity: 1;">
+        <div class="point icons-pastille-agence">
+            <div><span class="number" data-max="100">100</span>%</div>
+            <div class="unit">Pur jus</div>
+        </div>
+        <div class="point icons-pastille-agence">
+            <div>+<span class="number" data-max="17">17</span></div>
+            <div class="unit">Ans</div>
+        </div>
+        <div class="point icons-pastille-agence">
+            <div>+<span class="number" data-max="17">17</span></div>
+            <div class="unit">Agrumes</div>
+        </div>
+    </div>
+</section>
